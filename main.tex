@@ -1,0 +1,73 @@
+
+\documentclass{article}
+
+% Importing document settings from our file "packages.sty"
+\usepackage{packages}
+
+
+% Beginning of document
+\begin{document}
+
+% Inserting title page
+\import{./}{title}
+% \blankpage
+
+% Frontmatter
+\frontmatter
+\input{Frontmatter/abstract}
+\addcontentsline{toc}{section}{Abstract} % Adds the section to the table of content
+\newpage\blankpage % Adds a black page, if you want to print double-sided to a book, this makes sure that the next page is on the right hand side. Common for abstracts, prefaces, and table of contents, etc. Consider Removing theese for any digital version not meant to be printed!
+\input{Frontmatter/abstract_deutsch}
+\addcontentsline{toc}{section}{Zusammenfassung}
+\newpage\blankpage
+\input{Frontmatter/preface}
+\addcontentsline{toc}{section}{Preface}
+\newpage\blankpage
+% \input{Frontmatter/acknowledgements}
+% \addcontentsline{toc}{section}{Acknowledgements}
+% \newpage\blankpage
+% Inserting table of contents
+\tableofcontents
+\newpage
+% Inserting list of figures
+\listoffigures
+\newpage
+% Inserting list of tables
+\listoftables
+\newpage
+% Inserting glossary
+\printglossary[type=main,style=altlist, nonumberlist, title={Nomenclature}]
+\newpage
+% Inserting abbreviations
+\printglossary[type=\acronymtype, style=list, nonumberlist, title={Abbreviations}]
+
+% Main Matter
+\mainmatter
+
+% Introduction explaining this LaTeX-template
+\import{./Sections/}{Introduction}
+
+% Example section added from an external tex-file, here located in ./Sections/
+\import{./Sections/}{Literature Review}
+
+% Conception
+\import{./Sections/}{Conception}
+
+\import{./Sections/}{Implementation}
+
+\import{./Sections/}{Evaluation}
+
+\import{./Sections/}{Discussion and Limitation}
+
+\import{./Sections/}{Conclusion and Future Work}
+
+
+% Back Matter
+% Printing bibliography
+\newpage
+\printbibliography[heading = bibintoc, title = Bibliography]    % 'bibintoc' inserts our bibliography into the table of contents
+
+\input{Frontmatter/declaration}
+
+% End of document
+\end{document}
