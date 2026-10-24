@@ -1,31 +1,26 @@
-# Risk-Annotated Scene Graphs for Industrial Pick-and-Place
+Risk-Annotated Scene Graphs for a Pick-and-Place Robot Arm
 
-This repository contains the LaTeX source and supporting materials for a master's thesis on risk-annotated scene graphs for industrial robotic pick-and-place.
+## What this project is
 
-## Scope
+An industrial robot arm can run the same pick-and-place motion in two scenes that look almost identical, and only one of them is hazardous. A vial without its cork can spill during the transfer. A corrosive pictogram on its label decides how severe the spill would be. A knife offered blade-first to a hand is a different risk from the same knife offered handle-first. Generic object detection does not capture these small, local cues.
 
-The work investigates how a scene graph of an industrial work cell can be built from RGB-D camera observations and augmented with evidence-backed risk information. It focuses on object states, labels, object parts, and spatial or semantic relations that together determine manipulation hazards.
+This thesis builds two things for a tabletop work cell:
 
-## Repository layout
+1. **A scene graph pipeline** that builds and updates a graph of the work cell (objects, parts, states, labels, relations) from the robot's cameras and joint states, live or from recorded ROS bags.
+2. **An agentic annotation framework** that inspects the graph and the images with tools (vision-language models, geometry, knowledge lookup) and writes risk-relevant annotations onto the graph, each with evidence and confidence.
 
-- `main.tex` — thesis entry point.
-- `Sections/` — thesis chapters.
-- `Frontmatter/` — abstracts, declaration, nomenclature, and other preliminary pages.
-- `Images/` and `Frontpage/` — figures and title-page assets.
-- `references.bib` — bibliography database.
-- `Code/` — supporting example code.
+The annotated graph is produced while the task runs. It does not control the robot.
 
-## Building the thesis
+## Example
 
-Use a LaTeX distribution with `latexmk`, `biber`, `minted`, and Pygments available. From the repository root:
+A hazard is stored as a triple with its supporting information attached:
 
-```sh
-latexmk -pdf -shell-escape main.tex
+```yaml
+(knife_03.blade, pointing_toward, human_hand_zone)
+  hazard_type : mechanical_cut
+  severity    : <level>
+  evidence    : image region + graph edge + tool output
+  confidence  : 0.0 to 1.0, or status "unknown"
 ```
 
-The generated PDF is `main.pdf`. Build artifacts and minted caches are excluded through `.gitignore`.
-
-## Branches
-
-- `main` contains the repository landing page and current thesis source.
-- `Documentation` contains the original documentation branch pushed from the local project.
+Uncertain or contradictory observations are marked `unknown`. Annotations without valid evidence are rejected by schema validation.
