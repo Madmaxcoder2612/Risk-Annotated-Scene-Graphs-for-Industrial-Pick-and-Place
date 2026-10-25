@@ -12,7 +12,6 @@
 *.log
 *.lot
 *.out
-*.pdf
 *.run.xml
 *.synctex.gz
 *.toc
@@ -21,5 +20,3 @@
 # minted cache
 _minted*/
 
-# Source asset used by the title page
-!Frontpage/frontpage.pdf
