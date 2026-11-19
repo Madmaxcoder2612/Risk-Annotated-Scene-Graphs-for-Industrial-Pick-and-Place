@@ -1,0 +1,21 @@
+# Environments, caches
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.vscode/
+
+# Model weights (downloaded, not stored in Git)
+weights/
+*.pt
+
+# Camera captures and run outputs (may show people or the lab)
+out/
+out_test/
+
+# Recordings
+Bags/
+*.bag
+*.db3
+*.mcap
