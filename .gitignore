@@ -20,3 +20,16 @@
 # minted cache
 _minted*/
 
+
+# Environments, caches
+venv/
+.venv*/
+__pycache__/
+*.py[cod]
+.vscode/
+
+# Recordings and large data (kept outside Git, see manifest)
+Bags/
+*.bag
+*.db3
+*.mcap
