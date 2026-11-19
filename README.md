@@ -24,3 +24,14 @@ A hazard is stored as a triple with its supporting information attached:
 ```
 
 Uncertain or contradictory observations are marked `unknown`. Annotations without valid evidence are rejected by schema validation.
+
+## Branches
+
+This branch is only a landing page. Each work stream lives on its own branch. More branches are added as the work grows.
+
+| Branch | Content |
+|---|---|
+| `Documentation` | Thesis text (LaTeX) |
+| `code` | 2D prototype: scene graph, risk agent with validator, local VLM back-end, tests |
+
+Not in this repository: ROS bags and recordings, third-party papers, institute documents and meeting notes.
