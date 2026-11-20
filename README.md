@@ -33,5 +33,6 @@ This branch is only a landing page. Each work stream lives on its own branch. Mo
 |---|---|
 | `Documentation` | Thesis text (LaTeX) |
 | `code` | 2D prototype: scene graph, risk agent with validator, local VLM back-end, tests |
+| `ros` | ROS 2 robot platform, imported unchanged from the open-source project [fer_ros2](https://github.com/GKnerd/fer_ros2) (Apache-2.0); see `THIRD_PARTY.md` on that branch |
 
 Not in this repository: ROS bags and recordings, third-party papers, institute documents and meeting notes.
